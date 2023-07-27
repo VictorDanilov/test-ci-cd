@@ -2,7 +2,10 @@
   "name": "test-ci-cd",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/github": "^5.1.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -24,7 +27,8 @@
     "prettier:fix": "prettier . --write",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "lint:report": "eslint --output-file eslint_report.json --format json src"
+    "lint:report": "eslint --output-file eslint_report.json --format json src",
+    "action:build": "ncc build project-rule-checker-action.js --license licenses.txt --out dist-action"
   },
   "browserslist": {
     "production": [
@@ -39,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "@vercel/ncc": "^0.36.1",
     "eslint-config-prettier": "^8.9.0",
     "prettier": "3.0.0"
   }

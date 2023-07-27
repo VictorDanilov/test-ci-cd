@@ -26,3 +26,7 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           report-json: 'eslint_report.json'
           markdown-report-on-step-summary: true
+      - name: Project Rule Checker
+        uses: ./
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
