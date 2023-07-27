@@ -33,4 +33,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit: ${{ github.event.pull_request.head.sha }}
           pull-request-number: ${{ github.event.number }}
-          event: ${{ github.event }}
