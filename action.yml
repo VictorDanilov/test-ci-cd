@@ -1,6 +1,13 @@
 name: 'Project Rules Checker'
 description: 'Check intensive project for bad code'
 author: 'Viktor Danilov'
+inputs:
+  token:
+    required: true
+  commit:
+    required: true
+  pull-request-number:
+    required: true
 runs:
   using: 'node16'
   main: 'dist-action/index.js'

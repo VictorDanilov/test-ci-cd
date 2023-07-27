@@ -5,17 +5,19 @@ const eslintReportJobName = 'ESLint Report Analysis';
 
 const rulesDictionary = {
   'react/self-closing-comp': `Папався на **react/self-closing-comp**. Чекай инфу - http://hdrezka.me/continue/`,
+  'react/jsx-no-useless-fragment': 'Мусорный фрагмент? Серьезно? Выпиливай!',
 };
 
 async function run() {
-  const token = core.getInput('repo-token');
+  const token = core.getInput('token');
   const lastCommit = core.getInput('commit');
   const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
+  const event = core.getInput('event');
+  console.log(event);
   // const { sha: lastCommit } = github.context;
   // const prNumber = github.payload.pull_request.number;
 
-  console.log('github.context', github.context);
   console.log(token, pullRequestNumber, lastCommit);
 
   const pathParams = {

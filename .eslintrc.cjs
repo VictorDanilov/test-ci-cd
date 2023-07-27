@@ -5,6 +5,8 @@ module.exports = {
     {
       files: ['**/*.ts?(x)'],
       rules: {
+        '@typescript-eslint/no-unused-vars': 'error',
+        'react/jsx-no-useless-fragment': 'error',
         'react/self-closing-comp': [
           'error',
           {
