@@ -9740,18 +9740,19 @@ const rulesDictionary = {
 
 async function run() {
   const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('repo-token');
+  const lastCommit = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('commit');
+  const pullRequestNumber = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('pull-request-number');
   const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(token);
-  const { sha: lastCommit, issue } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context;
-
-  const prNumber = issue.number;
+  // const { sha: lastCommit } = github.context;
+  // const prNumber = github.payload.pull_request.number;
 
   console.log('github.context', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context);
-  console.log(token, prNumber, lastCommit);
+  console.log(token, pullRequestNumber, lastCommit);
 
   const pathParams = {
     owner: 'VictorDanilov',
     repo: 'test-ci-cd',
-    pull_number: prNumber,
+    pull_number: pullRequestNumber,
     headers: {
       'X-GitHub-Api-Version': '2022-11-28',
     },

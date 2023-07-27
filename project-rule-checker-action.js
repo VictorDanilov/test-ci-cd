@@ -9,18 +9,19 @@ const rulesDictionary = {
 
 async function run() {
   const token = core.getInput('repo-token');
+  const lastCommit = core.getInput('commit');
+  const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
-  const { sha: lastCommit, issue } = github.context;
-
-  const prNumber = issue.number;
+  // const { sha: lastCommit } = github.context;
+  // const prNumber = github.payload.pull_request.number;
 
   console.log('github.context', github.context);
-  console.log(token, prNumber, lastCommit);
+  console.log(token, pullRequestNumber, lastCommit);
 
   const pathParams = {
     owner: 'VictorDanilov',
     repo: 'test-ci-cd',
-    pull_number: prNumber,
+    pull_number: pullRequestNumber,
     headers: {
       'X-GitHub-Api-Version': '2022-11-28',
     },
