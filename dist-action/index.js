@@ -9745,6 +9745,7 @@ async function run() {
 
   const prNumber = issue.number;
 
+  console.log('github.context', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context);
   console.log(token, prNumber, lastCommit);
 
   const pathParams = {

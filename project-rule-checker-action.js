@@ -14,6 +14,7 @@ async function run() {
 
   const prNumber = issue.number;
 
+  console.log('github.context', github.context);
   console.log(token, prNumber, lastCommit);
 
   const pathParams = {
