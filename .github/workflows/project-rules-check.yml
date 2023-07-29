@@ -17,16 +17,6 @@ jobs:
         run: npm ci
         env:
           CI: TRUE
-      # - name: Save Code Linting Report JSON
-      #   run: npm run lint:report
-      #   continue-on-error: true
-      # - name: Annotate Code Linting Results
-      #   uses: ataylorme/eslint-annotate-action@v2
-      #   with:
-      #     repo-token: '${{ secrets.GITHUB_TOKEN }}'
-      #     report-json: 'eslint_report.json'
-      #     markdown-report-on-step-summary: true
-      #   continue-on-error: true
       - name: Project Rule Checker
         uses: ./
         with:

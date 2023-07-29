@@ -9752,9 +9752,6 @@ async function run() {
     repo: { owner, repo },
   } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context;
 
-  console.log('lastCommit', lastCommit);
-  console.log('pullRequestNumber', pullRequestNumber);
-
   const pathParams = {
     owner,
     repo,
@@ -9783,6 +9780,10 @@ async function run() {
       check_run_id: checkRunId,
     },
   );
+
+  if (annotations.length === 0) {
+    return;
+  }
 
   const { data: pullRequestMessages } = await octokit.request(
     'GET /repos/{owner}/{repo}/pulls/{pull_number}/comments',
@@ -9820,6 +9821,8 @@ async function run() {
       );
     }
   }
+
+  _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed('Please, check ESLint errors.');
 }
 
 try {
