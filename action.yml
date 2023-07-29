@@ -9,7 +9,7 @@ inputs:
   pull-request-number:
     required: true
 runs:
-  using: 'node16'
+  using: 'composite'
   steps:
     - name: Save Code Linting Report JSON
       shell: bash
@@ -22,6 +22,6 @@ runs:
         repo-token: '${{ github.token }}'
         report-json: 'eslint_report.json'
         markdown-report-on-step-summary: true
-    # - name: Check rules
-    #   shell: bash
-    #   run: 'node dist-action/index.js'
+    - name: Check rules
+      shell: bash
+      run: 'node dist-action/index.js'
