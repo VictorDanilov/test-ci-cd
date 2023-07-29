@@ -24,4 +24,4 @@ runs:
         markdown-report-on-step-summary: true
     - name: Check rules
       shell: bash
-      run: 'dist-action/index.js'
+      run: 'node dist-action/index.js'
