@@ -9,8 +9,9 @@ const rulesDictionary = {
 };
 
 async function run() {
-  console.log('github', github)
-  console.log('github payload', github.payload)
+  console.log('github context', github.context)
+  console.log('github payload pull_request', github.context.payload.pull_request)
+  console.log('github payload repository', github.context.payload.repository)
   const token = core.getInput('token');
   const lastCommit = core.getInput('commit');
   console.log('token', token)
@@ -18,9 +19,9 @@ async function run() {
   // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
 
-  const { owner, repo } = github.repo;
+  const { owner, repo } = github.context.repo;
 
-  const pullRequestNumber = github.issue.number
+  const pullRequestNumber = github.context.issue.number
 
   console.log('pullRequestNumber', pullRequestNumber)
 

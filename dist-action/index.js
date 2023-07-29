@@ -9740,8 +9740,9 @@ const rulesDictionary = {
 };
 
 async function run() {
-  console.log('github', _actions_github__WEBPACK_IMPORTED_MODULE_1__)
-  console.log('github payload', _actions_github__WEBPACK_IMPORTED_MODULE_1__.payload)
+  console.log('github context', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context)
+  console.log('github payload pull_request', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request)
+  console.log('github payload repository', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.repository)
   const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token');
   const lastCommit = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('commit');
   console.log('token', token)
@@ -9749,9 +9750,9 @@ async function run() {
   // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(token);
 
-  const { owner, repo } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.repo;
+  const { owner, repo } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.repo;
 
-  const pullRequestNumber = _actions_github__WEBPACK_IMPORTED_MODULE_1__.issue.number
+  const pullRequestNumber = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.issue.number
 
   console.log('pullRequestNumber', pullRequestNumber)
 
