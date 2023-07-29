@@ -27,3 +27,5 @@ runs:
     - name: Check rules
       shell: bash
       run: 'node dist-action/index.js'
+      env:
+        TOKEN: '${{ github.token }}'
