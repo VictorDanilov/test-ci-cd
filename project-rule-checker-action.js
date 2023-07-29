@@ -11,8 +11,13 @@ const rulesDictionary = {
 async function run() {
   const token = core.getInput('token');
   const lastCommit = core.getInput('commit');
-  const pullRequestNumber = core.getInput('pull-request-number');
+  // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
+
+  const pullRequestNumber = github.issue.number
+
+  console.log('pullRequestNumber', pullRequestNumber)
+  console.log('github', github)
 
   const pathParams = {
     owner: 'VictorDanilov',

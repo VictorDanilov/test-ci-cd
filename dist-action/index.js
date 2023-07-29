@@ -9742,8 +9742,13 @@ const rulesDictionary = {
 async function run() {
   const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token');
   const lastCommit = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('commit');
-  const pullRequestNumber = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('pull-request-number');
+  // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(token);
+
+  const pullRequestNumber = _actions_github__WEBPACK_IMPORTED_MODULE_1__.issue.number
+
+  console.log('pullRequestNumber', pullRequestNumber)
+  console.log('github', _actions_github__WEBPACK_IMPORTED_MODULE_1__)
 
   const pathParams = {
     owner: 'VictorDanilov',
