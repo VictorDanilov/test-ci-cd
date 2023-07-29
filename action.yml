@@ -12,6 +12,7 @@ runs:
   using: 'node16'
   steps:
     - name: Save Code Linting Report JSON
+      shell: bash
       run: eslint --output-file eslint_report.json --format json src
       continue-on-error: true
     - name: Annotate Code Linting Results
