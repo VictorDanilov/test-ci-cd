@@ -23,6 +23,7 @@ runs:
         repo-token: '${{ github.token }}'
         report-json: 'eslint_report.json'
         markdown-report-on-step-summary: true
+      continue-on-error: true
     - name: Check rules
       shell: bash
       run: 'node dist-action/index.js'
