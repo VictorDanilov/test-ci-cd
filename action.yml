@@ -19,8 +19,9 @@ runs:
       uses: ataylorme/eslint-annotate-action@v2
       with:
         # repo-token: '${{ secrets.GITHUB_TOKEN }}'
-        repo-token: '${{ inputs.token }}'
+        repo-token: '${{ github.token }}'
         report-json: 'eslint_report.json'
         markdown-report-on-step-summary: true
     - name: Check rules
-      uses: 'dist-action/index.js'
+      shell: bash
+      run: 'dist-action/index.js'
