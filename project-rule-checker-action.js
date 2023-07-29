@@ -14,14 +14,16 @@ async function run() {
   // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
 
+  const { owner, repo } = github.repo;
+
   const pullRequestNumber = github.issue.number
 
   console.log('pullRequestNumber', pullRequestNumber)
   console.log('github', github)
 
   const pathParams = {
-    owner: 'VictorDanilov',
-    repo: 'test-ci-cd',
+    owner,
+    repo,
     pull_number: pullRequestNumber,
     headers: {
       'X-GitHub-Api-Version': '2022-11-28',
