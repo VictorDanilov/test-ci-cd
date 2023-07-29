@@ -9740,22 +9740,20 @@ const rulesDictionary = {
 };
 
 async function run() {
-  const token = process.env.TOKEN;
-  console.log('github context', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context)
-  console.log('github payload pull_request', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request)
-  console.log('pull_request head', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.head)
-  const token2 = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('TOKEN');
-  console.log(token, token2);
-  // const lastCommit = core.getInput('commit');
-  const { after: lastCommit, number: pullRequestNumber } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload
-  // const lastCommit = github.context.payload.after;
-  console.log('token', token)
-  console.log('lastCommit', lastCommit)
-  console.log('pullRequestNumber', pullRequestNumber)
-  // const pullRequestNumber = core.getInput('pull-request-number');
-  const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(token);
+  const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(process.env.TOKEN);
 
-  const { owner, repo } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.repo;
+  const {
+    payload: {
+      pull_request: {
+        head: { sha: lastCommit },
+        number: pullRequestNumber,
+      },
+    },
+    repo: { owner, repo },
+  } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context;
+
+  console.log('lastCommit', lastCommit);
+  console.log('pullRequestNumber', pullRequestNumber);
 
   const pathParams = {
     owner,

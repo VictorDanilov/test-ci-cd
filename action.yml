@@ -4,22 +4,16 @@ author: 'Viktor Danilov'
 inputs:
   token:
     required: true
-  commit:
-    required: true
-  pull-request-number:
-    required: true
 runs:
   using: 'composite'
   steps:
     - name: Save Code Linting Report JSON
       shell: bash
       run: npm run lint:report
-      # run: eslint --output-file eslint_report.json --format json src
       continue-on-error: true
     - name: Annotate Code Linting Results
       uses: ataylorme/eslint-annotate-action@v2
       with:
-        # repo-token: '${{ secrets.GITHUB_TOKEN }}'
         repo-token: '${{ github.token }}'
         report-json: 'eslint_report.json'
         markdown-report-on-step-summary: true
