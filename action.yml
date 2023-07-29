@@ -27,3 +27,7 @@ runs:
     - name: Check rules
       shell: bash
       run: 'node dist-action/index.js'
+      with:
+        token: ${{ github.token }}
+        commit: ${{ inputs.commit }}
+        pull-request-number: ${{ inputs['pull-request-number'] }}
