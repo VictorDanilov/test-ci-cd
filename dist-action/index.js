@@ -9742,8 +9742,12 @@ const rulesDictionary = {
 async function run() {
   const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token');
   const lastCommit = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('commit');
+  console.log('token', token)
+  console.log('lastCommit', lastCommit)
   // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(token);
+
+  const { owner, repo } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.repo;
 
   const pullRequestNumber = _actions_github__WEBPACK_IMPORTED_MODULE_1__.issue.number
 
@@ -9751,8 +9755,8 @@ async function run() {
   console.log('github', _actions_github__WEBPACK_IMPORTED_MODULE_1__)
 
   const pathParams = {
-    owner: 'VictorDanilov',
-    repo: 'test-ci-cd',
+    owner,
+    repo,
     pull_number: pullRequestNumber,
     headers: {
       'X-GitHub-Api-Version': '2022-11-28',

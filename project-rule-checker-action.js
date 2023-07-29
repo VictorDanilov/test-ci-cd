@@ -11,6 +11,8 @@ const rulesDictionary = {
 async function run() {
   const token = core.getInput('token');
   const lastCommit = core.getInput('commit');
+  console.log('token', token)
+  console.log('lastCommit', lastCommit)
   // const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
 
