@@ -8,6 +8,8 @@ const rulesDictionary = {
   'react/jsx-no-useless-fragment': 'Мусорный фрагмент? Серьезно? Выпиливай!',
 };
 
+const defaultCommentSuggestion = 'Ля, я хз, правь сам. Советов нет.';
+
 async function run() {
   const octokit = github.getOctokit(process.env.TOKEN);
 
@@ -71,7 +73,7 @@ async function run() {
 
     const eslintRule = message.slice(1, message.indexOf(']'));
     const commentMessage =
-      rulesDictionary[eslintRule] || 'Ля, я хз, правь сам. Советов нет.';
+      rulesDictionary[eslintRule] || defaultCommentSuggestion;
     const commitId = annotation.blob_href.split('/')[6];
     const messageForCheck = `${path}_${start_line}_${commentMessage}`;
 
@@ -91,7 +93,7 @@ async function run() {
     }
   }
 
-  core.setFailed('Please, check ESLint errors.');
+  core.setFailed('Check ESLint errors.');
 }
 
 try {

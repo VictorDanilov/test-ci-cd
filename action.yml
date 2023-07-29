@@ -1,9 +1,11 @@
 name: 'Project Rules Checker'
 description: 'Check intensive project for bad code'
 author: 'Viktor Danilov'
-inputs:
-  token:
-    required: true
+
+branding:
+  icon: 'check-square',
+  color: 'green'
+
 runs:
   using: 'composite'
   steps:

@@ -2,8 +2,6 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-class foo {}
-
 function App() {
   const some = 'some';
 

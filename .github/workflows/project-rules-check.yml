@@ -19,5 +19,3 @@ jobs:
           CI: TRUE
       - name: Project Rule Checker
         uses: ./
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
