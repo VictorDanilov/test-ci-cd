@@ -3,7 +3,7 @@ description: 'Check intensive project for bad code'
 author: 'Viktor Danilov'
 
 branding:
-  icon: 'check-square',
+  icon: 'check-square'
   color: 'green'
 
 runs:
