@@ -16,6 +16,7 @@ runs:
       run: eslint --output-file eslint_report.json --format json src
       continue-on-error: true
     - name: Annotate Code Linting Results
+      shell: bash
       uses: ataylorme/eslint-annotate-action@v2
       with:
         repo-token: '${{ secrets.GITHUB_TOKEN }}'
