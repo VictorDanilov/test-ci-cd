@@ -25,4 +25,3 @@ runs:
     # - name: Check rules
     #   shell: bash
     #   run: 'node dist-action/index.js'
-  main: 'dist-action/index.js'
