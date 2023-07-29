@@ -13,7 +13,8 @@ runs:
   steps:
     - name: Save Code Linting Report JSON
       shell: bash
-      run: eslint --output-file eslint_report.json --format json src
+      run: npm run lint:report
+      # run: eslint --output-file eslint_report.json --format json src
       continue-on-error: true
     - name: Annotate Code Linting Results
       uses: ataylorme/eslint-annotate-action@v2
