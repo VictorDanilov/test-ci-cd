@@ -9,6 +9,8 @@ const rulesDictionary = {
 };
 
 async function run() {
+  console.log('github', github)
+  console.log('github payload', github.payload)
   const token = core.getInput('token');
   const lastCommit = core.getInput('commit');
   console.log('token', token)
@@ -21,7 +23,6 @@ async function run() {
   const pullRequestNumber = github.issue.number
 
   console.log('pullRequestNumber', pullRequestNumber)
-  console.log('github', github)
 
   const pathParams = {
     owner,

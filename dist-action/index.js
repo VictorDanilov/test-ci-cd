@@ -9740,6 +9740,8 @@ const rulesDictionary = {
 };
 
 async function run() {
+  console.log('github', _actions_github__WEBPACK_IMPORTED_MODULE_1__)
+  console.log('github payload', _actions_github__WEBPACK_IMPORTED_MODULE_1__.payload)
   const token = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('token');
   const lastCommit = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('commit');
   console.log('token', token)
@@ -9752,7 +9754,6 @@ async function run() {
   const pullRequestNumber = _actions_github__WEBPACK_IMPORTED_MODULE_1__.issue.number
 
   console.log('pullRequestNumber', pullRequestNumber)
-  console.log('github', _actions_github__WEBPACK_IMPORTED_MODULE_1__)
 
   const pathParams = {
     owner,
