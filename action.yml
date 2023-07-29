@@ -10,4 +10,15 @@ inputs:
     required: true
 runs:
   using: 'node16'
-  main: 'dist-action/index.js'
+  steps:
+    - name: Save Code Linting Report JSON
+      run: eslint --output-file eslint_report.json --format json src
+      continue-on-error: true
+    - name: Annotate Code Linting Results
+      uses: ataylorme/eslint-annotate-action@v2
+      with:
+        repo-token: '${{ secrets.GITHUB_TOKEN }}'
+        report-json: 'eslint_report.json'
+        markdown-report-on-step-summary: true
+    - name: Check rules
+      uses: 'dist-action/index.js'

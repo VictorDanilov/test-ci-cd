@@ -9744,12 +9744,6 @@ async function run() {
   const lastCommit = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('commit');
   const pullRequestNumber = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('pull-request-number');
   const octokit = _actions_github__WEBPACK_IMPORTED_MODULE_1__.getOctokit(token);
-  const event = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('event');
-  console.log(event);
-  // const { sha: lastCommit } = github.context;
-  // const prNumber = github.payload.pull_request.number;
-
-  console.log(token, pullRequestNumber, lastCommit);
 
   const pathParams = {
     owner: 'VictorDanilov',

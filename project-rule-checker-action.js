@@ -13,12 +13,6 @@ async function run() {
   const lastCommit = core.getInput('commit');
   const pullRequestNumber = core.getInput('pull-request-number');
   const octokit = github.getOctokit(token);
-  const event = core.getInput('event');
-  console.log(event);
-  // const { sha: lastCommit } = github.context;
-  // const prNumber = github.payload.pull_request.number;
-
-  console.log(token, pullRequestNumber, lastCommit);
 
   const pathParams = {
     owner: 'VictorDanilov',
