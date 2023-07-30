@@ -9,6 +9,9 @@ branding:
 runs:
   using: 'composite'
   steps:
+    - name: Install project rules checker dependencies
+      shell: bash
+      run: npm i eslint-config-prettier --no-save
     - name: Save Code Linting Report JSON
       shell: bash
       # run: npm run lint:report
