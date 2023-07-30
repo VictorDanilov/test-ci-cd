@@ -9799,18 +9799,23 @@ async function run() {
     new Set(),
   );
 
-  console.log(pullRequestMessages);
-
   for (const annotation of annotations) {
-    const { path, start_line, message } = annotation;
+    const {
+      path,
+      start_line: startLine,
+      end_line: endLine,
+      message,
+    } = annotation;
 
-    console.log(message, start_line, annotation);
+    console.log(message, startLine, endLine, annotation);
+
+    const line = startLine === endLine ? startLine : endLine;
 
     const eslintRule = message.slice(1, message.indexOf(']'));
     const commentMessage =
       rulesDictionary[eslintRule] || defaultCommentSuggestion;
     const commitId = annotation.blob_href.split('/')[6];
-    const messageForCheck = `${path}_${start_line}_${commentMessage}`;
+    const messageForCheck = `${path}_${line}_${commentMessage}`;
 
     const isNewComment = !setOfMessages.has(messageForCheck);
 
@@ -9820,7 +9825,7 @@ async function run() {
         {
           ...pathParams,
           body: commentMessage,
-          line: start_line,
+          line,
           path,
           commit_id: commitId,
         },
