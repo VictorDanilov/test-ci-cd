@@ -70,7 +70,7 @@ async function run() {
     new Set(),
   );
 
-  console.log(...setOfMessages);
+  console.log(pullRequestMessages);
 
   for (const annotation of annotations) {
     const { path, start_line, message } = annotation;
