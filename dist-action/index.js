@@ -9801,6 +9801,8 @@ async function run() {
     new Set(),
   );
 
+  console.log(...setOfMessages);
+
   for (const annotation of annotations) {
     const { path, start_line, message } = annotation;
 
