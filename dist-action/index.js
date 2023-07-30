@@ -9754,8 +9754,14 @@ async function run() {
     repo: { owner, repo },
   } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context;
 
-  console.log('github.context', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context);
-  console.log('core', _actions_core__WEBPACK_IMPORTED_MODULE_0__);
+  console.log(
+    'github.context.payload.pull_request.base',
+    _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.base,
+  );
+  console.log(
+    'github.context.payload.pull_request.head',
+    _actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload.pull_request.head,
+  );
 
   const pathParams = {
     owner,

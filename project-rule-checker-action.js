@@ -23,8 +23,14 @@ async function run() {
     repo: { owner, repo },
   } = github.context;
 
-  console.log('github.context', github.context);
-  console.log('core', core);
+  console.log(
+    'github.context.payload.pull_request.base',
+    github.context.payload.pull_request.base,
+  );
+  console.log(
+    'github.context.payload.pull_request.head',
+    github.context.payload.pull_request.head,
+  );
 
   const pathParams = {
     owner,
