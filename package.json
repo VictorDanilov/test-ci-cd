@@ -20,7 +20,6 @@
     "prettier:fix": "prettier . --write",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
-    "lint:report": "eslint --output-file eslint_report.json --format json src",
     "action:build": "ncc build project-rule-checker-action.js --license licenses.txt --out dist-action"
   },
   "browserslist": {

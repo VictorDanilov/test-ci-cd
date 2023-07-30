@@ -11,7 +11,7 @@ runs:
   steps:
     - name: Install project rules checker dependencies
       shell: bash
-      run: npm i eslint-config-prettier --no-save
+      run: npm ci --prefix dist-action
     - name: Save Code Linting Report JSON
       shell: bash
       # run: npm run lint:report
