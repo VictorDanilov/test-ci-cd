@@ -32,13 +32,6 @@ async function run() {
     },
   };
 
-  const some = await octokit.rest.repos.getAllStatusCheckContexts({
-    ...pathParams,
-    ref: lastCommit,
-  });
-
-  console.log('some', some);
-
   const { data: checkRuns } = await octokit.request(
     'GET /repos/{owner}/{repo}/commits/{ref}/check-runs',
     {
