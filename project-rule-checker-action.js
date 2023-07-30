@@ -23,6 +23,9 @@ async function run() {
     repo: { owner, repo },
   } = github.context;
 
+  console.log('github.context', github.context);
+  console.log('core', core);
+
   const pathParams = {
     owner,
     repo,
@@ -43,6 +46,8 @@ async function run() {
   const { id: checkRunId } = checkRuns.check_runs.find(
     ({ name }) => name === eslintReportJobName,
   );
+
+  console.log('checkRunId', checkRunId);
 
   const { data: annotations } = await octokit.request(
     'GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations',

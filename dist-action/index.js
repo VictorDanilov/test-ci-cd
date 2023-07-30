@@ -9754,6 +9754,9 @@ async function run() {
     repo: { owner, repo },
   } = _actions_github__WEBPACK_IMPORTED_MODULE_1__.context;
 
+  console.log('github.context', _actions_github__WEBPACK_IMPORTED_MODULE_1__.context);
+  console.log('core', _actions_core__WEBPACK_IMPORTED_MODULE_0__);
+
   const pathParams = {
     owner,
     repo,
@@ -9774,6 +9777,8 @@ async function run() {
   const { id: checkRunId } = checkRuns.check_runs.find(
     ({ name }) => name === eslintReportJobName,
   );
+
+  console.log('checkRunId', checkRunId);
 
   const { data: annotations } = await octokit.request(
     'GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations',
