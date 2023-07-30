@@ -23,15 +23,6 @@ async function run() {
     repo: { owner, repo },
   } = github.context;
 
-  console.log(
-    'github.context.payload.pull_request.base',
-    github.context.payload.pull_request.base,
-  );
-  console.log(
-    'github.context.payload.pull_request.head',
-    github.context.payload.pull_request.head,
-  );
-
   const pathParams = {
     owner,
     repo,
@@ -40,6 +31,13 @@ async function run() {
       'X-GitHub-Api-Version': '2022-11-28',
     },
   };
+
+  const some = await octokit.rest.repos.getAllStatusCheckContexts({
+    ...pathParams,
+    ref: lastCommit,
+  });
+
+  console.log('some', some);
 
   const { data: checkRuns } = await octokit.request(
     'GET /repos/{owner}/{repo}/commits/{ref}/check-runs',
