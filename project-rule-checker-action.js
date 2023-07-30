@@ -44,8 +44,6 @@ async function run() {
     ({ name }) => name === eslintReportJobName,
   );
 
-  console.log('checkRunId', checkRunId);
-
   const { data: annotations } = await octokit.request(
     'GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations',
     {
@@ -74,6 +72,8 @@ async function run() {
 
   for (const annotation of annotations) {
     const { path, start_line, message } = annotation;
+
+    console.log(message, start_line, annotation);
 
     const eslintRule = message.slice(1, message.indexOf(']'));
     const commentMessage =
