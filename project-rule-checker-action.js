@@ -78,15 +78,15 @@ async function run() {
 
     console.log(message, startLine, endLine, annotation);
 
-    const line = startLine === endLine ? startLine : endLine;
-
     const eslintRule = message.slice(1, message.indexOf(']'));
     const commentMessage =
       rulesDictionary[eslintRule] || defaultCommentSuggestion;
-    const commitId = annotation.blob_href.split('/')[6];
-    const messageForCheck = `${path}_${line}_${commentMessage}`;
 
+    const line = startLine === endLine ? startLine : endLine;
+    const messageForCheck = `${path}_${line}_${commentMessage}`;
     const isNewComment = !setOfMessages.has(messageForCheck);
+
+    const commitId = annotation.blob_href.split('/')[6];
 
     if (isNewComment) {
       await octokit.request(
