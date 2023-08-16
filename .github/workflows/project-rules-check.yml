@@ -17,5 +17,5 @@ jobs:
         run: npm ci
         env:
           CI: TRUE
-      - name: Project Rule Checker
-        uses: VictorDanilov/react-project-checker-action@v0.0.1-alpha
+      - name: Check React Project
+        uses: VictorDanilov/react-project-checker-action@v0.0.2-alpha
