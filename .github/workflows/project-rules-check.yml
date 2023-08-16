@@ -18,4 +18,4 @@ jobs:
         env:
           CI: TRUE
       - name: Check React Project
-        uses: VictorDanilov/react-project-checker-action@v0.0.5-alpha
+        uses: VictorDanilov/react-project-checker-action@v0.0.6-alpha
