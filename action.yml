@@ -1,0 +1,31 @@
+name: 'Project Rules Checker'
+description: 'Check intensive project for bad code'
+author: 'Viktor Danilov'
+
+branding:
+  icon: 'check-square'
+  color: 'green'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Install project rules checker dependencies
+      shell: bash
+      run: npm ci --prefix dist-action
+    - name: Save Code Linting Report JSON
+      shell: bash
+      # run: npm run lint:report
+      run: node_modules/.bin/eslint --config dist-action/.eslintrc.cjs --output-file eslint_report.json --format json src
+      continue-on-error: true
+    - name: Annotate Code Linting Results
+      uses: ataylorme/eslint-annotate-action@v2
+      with:
+        repo-token: '${{ github.token }}'
+        report-json: 'eslint_report.json'
+        markdown-report-on-step-summary: true
+      continue-on-error: true
+    - name: Check rules
+      shell: bash
+      run: 'node dist-action/index.js'
+      env:
+        TOKEN: '${{ github.token }}'

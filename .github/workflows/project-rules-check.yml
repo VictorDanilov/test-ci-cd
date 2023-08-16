@@ -5,24 +5,17 @@ on: [pull_request]
 jobs:
   rules_check:
     runs-on: ubuntu-latest
+    permissions: write-all
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js 18
-      uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: 'npm'
-    - name: Install Node Dependencies
-      run: npm ci
-      env:
-        CI: TRUE
-    - name: Test Code Linting
-      run: npm run lint
-    - name: Save Code Linting Report JSON
-      run: npm run lint:report
-      continue-on-error: true
-    - name: Annotate Code Linting Results
-      uses: ataylorme/eslint-annotate-action@v2
-      with:
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
-        report-json: "eslint_report.json"
+      - uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - name: Install Node Dependencies
+        run: npm ci
+        env:
+          CI: TRUE
+      - name: Check React Project
+        uses: VictorDanilov/react-project-checker-action@v0.0.12-alpha
